@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+day=${1:-$(date '+%-d')}
+
+cp -n ./template.js $day.js
+touch $day-test.txt
+touch $day.txt
+
+node --stack-size=100000 $day.js
