@@ -5,9 +5,9 @@ day=${1:-$(date '+%-d')}
 if [[ ! -d "$day" ]]; then
 	mkdir "$day"
 	cp ./template.js "$day/solve.js"
-	sed "s/__DAY__/$day/g" "$day/solve.js"
-	touch "$day/testData.txt"
-	touch "$day/data.txt"
+	sed -i "s/__DAY__/$day/g" "$day/solve.js"
+	touch "$day/testInput.txt"
+	touch "$day/input.txt"
 fi
 
 node --stack-size=100000 "$day/solve.js"
