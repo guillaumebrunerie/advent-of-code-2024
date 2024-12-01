@@ -1,0 +1,36 @@
+#!/usr/bin/node
+
+import { writeFileSync } from "fs";
+import { JSDOM } from "jsdom";
+
+const url = process.argv[2];
+const day = process.argv[3];
+
+const text = await (await fetch(url)).text();
+const dom = new JSDOM(text);
+
+const testInputs = [];
+for (const pre of dom.window.document.querySelectorAll("pre")) {
+	const testInput = pre.textContent;
+	if (!testInputs.includes(testInput)) {
+		testInputs.push(testInput);
+	}
+}
+
+if (testInputs.length == 1) {
+	const testInput = testInputs[0];
+	writeFileSync(`${day}/testInput.txt`, testInput);
+
+	console.log(`
+Test input:
+${testInput}
+`);
+} else {
+	testInput.forEach((testInput, i) => {
+		writeFileSync(`${day}/testInput${i + 1}.txt`, testInput);
+		console.log(`
+Test input #${i + 1}:
+${testInput}
+`);
+	});
+}
