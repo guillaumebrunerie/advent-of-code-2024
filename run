@@ -2,8 +2,12 @@
 
 day=${1:-$(date '+%-d')}
 
-cp --update=none ./template.js $day.js
-touch $day-test.txt
-touch $day.txt
+if [[ ! -d "$day" ]]; then
+	mkdir "$day"
+	cp ./template.js "$day/solve.js"
+	sed "s/__DAY__/$day/g" "$day/solve.js"
+	touch "$day/testData.txt"
+	touch "$day/data.txt"
+fi
 
-node --stack-size=100000 $day.js
+node --stack-size=100000 "$day/solve.js"

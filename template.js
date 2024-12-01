@@ -1,6 +1,7 @@
-// Total duration: xx min (rounded to the nearest minute)
-// First star at:  hh:mm
-// Second star at: hh:mm
+// First star: mm:ss (rank rrr)
+// Second star: mm:ss (rank rrr)
+
+import { execute } from "../execute.js";
 
 const solveProblem = (data) => {
 	// Parse data
@@ -16,17 +17,7 @@ const solveProblem = (data) => {
 	console.log("");
 };
 
-// Library code
-
-const fs = require("fs");
-const path = require("path");
-const day = path.parse(__filename).name;
-
-const files = [`${day}-test`, `${day}`];
-
-files.forEach((file) => {
-	fs.readFile(`./${file}.txt`, "utf8", (_, data) => {
-		console.log(`Data from file ${file}.txt`);
-		solveProblem(data);
-	});
-});
+execute(solveProblem, [
+	{ file: "__DAY__/testInput", label: "Test input" },
+	{ file: "__DAY__/input", label: "Actual input" },
+]);

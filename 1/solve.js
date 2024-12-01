@@ -1,6 +1,8 @@
 // First star: 3:11 (rank 866)
 // Second star: 4:23 (rank 554)
 
+import { execute } from "../execute.js";
+
 const solveProblem = (data) => {
 	// Parse data
 	const lines = data.split("\n").slice(0, -1);
@@ -27,17 +29,7 @@ const solveProblem = (data) => {
 	console.log(r2.reduce((acc, v) => acc + v, 0));
 };
 
-// Library code
-
-const fs = require("fs");
-const path = require("path");
-const day = path.parse(__filename).name;
-
-const files = [`${day}-test`, `${day}`];
-
-files.forEach((file) => {
-	fs.readFile(`./${file}.txt`, "utf8", (_, data) => {
-		console.log(`Data from file ${file}.txt`);
-		solveProblem(data);
-	});
-});
+execute(solveProblem, [
+	{ file: "1/testInput", label: "Test input" },
+	{ file: "1/input", label: "Actual input" },
+]);
