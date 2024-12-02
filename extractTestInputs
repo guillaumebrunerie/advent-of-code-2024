@@ -27,16 +27,20 @@ if (testInputs.length == 1) {
 	const testInput = testInputs[0];
 	writeFileSync(`${day}/testInput.txt`, testInput);
 
-	console.log(`
+	process.stderr.write(`
 Test input:
 ${testInput}
 `);
+	console.log(`\t{ file: "${day}/testInput", label: "Test input" },`);
 } else {
 	testInput.forEach((testInput, i) => {
 		writeFileSync(`${day}/testInput${i + 1}.txt`, testInput);
-		console.log(`
+		process.stderr.write(`
 Test input #${i + 1}:
 ${testInput}
 `);
 	});
+	console.log(
+		`\t{ file: "${day}/testInput${i + 1}", label: "Test input #${i + 1}" },`,
+	);
 }

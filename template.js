@@ -18,6 +18,6 @@ const solveProblem = (data) => {
 };
 
 execute(solveProblem, [
-	{ file: "__DAY__/testInput", label: "Test input" },
+__TEST_INPUTS__
 	{ file: "__DAY__/input", label: "Actual input" },
 ]);

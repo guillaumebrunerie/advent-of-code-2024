@@ -10,7 +10,7 @@ if [[ ! -d "$day" ]]; then
 	cp ./template.js "$day/solve.js"
 	sed -i "s/__DAY__/$day/g" "$day/solve.js"
 	curl -A "github.com/guillaumebrunerie/advent-of-code-2024" -b session=$ADVENT_OF_CODE_SESSION "https://adventofcode.com/${year}/day/${day}/input" > "$day/input.txt" || echo "Failed to download input from Advent of Code!"
-	./extractTestInputs "https://adventofcode.com/${year}/day/${day}" "$day"
+	sed -i "s#__TEST_INPUTS__#$(./extractTestInputs "https://adventofcode.com/${year}/day/${day}" "$day")#g" "$day/solve.js"
 fi
 
 node --stack-size=100000 "$day/solve.js"
