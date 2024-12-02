@@ -6,7 +6,13 @@ import { JSDOM } from "jsdom";
 const url = process.argv[2];
 const day = process.argv[3];
 
-const text = await (await fetch(url)).text();
+const text = await (
+	await fetch(url, {
+		headers: {
+			"User-Agent": "github.com/guillaumebrunerie/advent-of-code-2024",
+		},
+	})
+).text();
 const dom = new JSDOM(text);
 
 const testInputs = [];
