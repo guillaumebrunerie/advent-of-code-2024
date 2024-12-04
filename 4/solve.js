@@ -65,6 +65,8 @@ const solveProblem = (data) => {
 };
 
 execute(solveProblem, [
-	{ file: "4/testInput", label: "Test input" },
+	{ file: "4/testInput1", label: "Test input #1" },
+	{ file: "4/testInput2", label: "Test input #2" },
+	{ file: "4/testInput3", label: "Test input #3" },
 	{ file: "4/input", label: "Actual input" },
 ]);

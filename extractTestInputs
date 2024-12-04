@@ -39,8 +39,11 @@ ${testInput}
 Test input #${i + 1}:
 ${testInput}
 `);
+		process.stdout.write(
+			`\t{ file: "${day}/testInput${i + 1}", label: "Test input #${i + 1}" },`,
+		);
+		if (i < testInputs.length - 1) {
+			process.stdout.write("\\n");
+		}
 	});
-	console.log(
-		`\t{ file: "${day}/testInput${i + 1}", label: "Test input #${i + 1}" },`,
-	);
 }
