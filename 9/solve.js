@@ -1,5 +1,5 @@
-// First star: 19:23 (rank 1871)
-// Second star: 42:30 (rank 1380)
+// First star: 19:23 (rank 1871) :(
+// Second star: 42:30 (rank 1380) :(
 
 import { execute } from "../execute.js";
 
